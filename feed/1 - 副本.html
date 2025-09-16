@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #debug {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>点击跳转到目标网站</h1>
+        <button onclick="redirectToAffiliate()">立即跳转</button>
+        <div id="debug"></div>
+    </div>
+
+    <script>
+        function redirectToAffiliate() {
+            // 获取当前页面的查询参数
+            const queryString = window.location.search;
+            
+            // 构建目标URL
+            let targetUrl = 'https://2025thingstodo.online/affiliate.html';
+            
+            // 如果有查询参数，添加到目标URL
+            if (queryString) {
+                targetUrl += queryString;
+            }
+            
+            // 显示调试信息（可选）
+            document.getElementById('debug').innerHTML = `正在跳转到: <br>${targetUrl}`;
+            
+            // 执行跳转
+            window.location.href = targetUrl;
+        }
+
+        // 页面加载时显示当前URL信息
+        window.onload = function() {
+            const currentUrl = window.location.href;
+            const queryString = window.location.search;
+            
+            if (queryString) {
+                document.getElementById('debug').innerHTML = 
+                    `当前参数: ${queryString}<br>点击按钮将跳转到: https://2025thingstodo.online/affiliate.html${queryString}`;
+            } else {
+                document.getElementById('debug').innerHTML = 
+                    `当前无参数<br>点击按钮将跳转到: https://2025thingstodo.online/affiliate.html`;
+            }
+        };
+    </script>
+</body>
+</html>
